@@ -25,6 +25,10 @@ namespace Hourglass_CIS174_WesBrown.BusinessLogic
             _logger = logger;
         }
 
+        public PaymentsManager()
+        {
+        }
+
         public Payment CreatePayment(int id)
         {
             Payment payment = new Payment();
@@ -70,7 +74,7 @@ namespace Hourglass_CIS174_WesBrown.BusinessLogic
             return allPayments;
         }
 
-        private double CalculatePaymentAmount(Employee employee, WeeklyHours weeklyHours)
+        public double CalculatePaymentAmount(Employee employee, WeeklyHours weeklyHours)
         {
             double payRate = employee.PayRate;
             double regularHours = weeklyHours.RegularHours;

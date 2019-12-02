@@ -24,9 +24,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Employee.RemainingPtoHours)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employee.IsDeleted)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -45,9 +42,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.RemainingPtoHours)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsDeleted)
                 </td>
                 <td>
                     <a asp-action="UpdateEmployee" asp-route-id="@item.Id">Edit</a> |

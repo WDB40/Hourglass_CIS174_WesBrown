@@ -73,25 +73,7 @@ namespace Hourglass_CIS174_WesBrown.Controllers
 
         public IActionResult ViewAllUnapprovedPto()
         {
-            IList<PtoRequest> ptoRequests = ptoManager.GetAllNonApprovedPtoRequests();
-            IList<AllUnapprovedPto> unapprovedPtos = new List<AllUnapprovedPto>();
-            EmployeeModifier employee;
-            AllUnapprovedPto unapprovedPto;
-
-            foreach (PtoRequest request in ptoRequests)
-            {
-                unapprovedPto = new AllUnapprovedPto();
-                employee = employeeManager.GetEmployee(request.EmployeeId);
-
-                unapprovedPto.Id = request.Id;
-                unapprovedPto.FirstName = employee.FirstName;
-                unapprovedPto.LastName = employee.LastName;
-                unapprovedPto.RequestedDate = request.RequestDate;
-                unapprovedPto.RequestedHours = request.RequestedHours;
-
-                unapprovedPtos.Add(unapprovedPto);
-            }
-
+            IList<AllUnapprovedPto> unapprovedPtos = ptoManager.GetAllNonApprovedPtoRequests();
             return View(unapprovedPtos);
         }
 

@@ -22,6 +22,10 @@ namespace Hourglass_CIS174_WesBrown.BusinessLogic
             employeeDataService = eDataService;
         }
 
+        public PtoManager()
+        {
+        }
+
         public SubmitPTORequest CreatePtoRequest(SubmitPTORequest submitPTORequest)
         {
             PtoRequest ptoRequest = new PtoRequest();
@@ -97,9 +101,28 @@ namespace Hourglass_CIS174_WesBrown.BusinessLogic
             return ptoRequestDataService.GetAllApprovedPtoRequests();
         }
 
-        public IList<PtoRequest> GetAllNonApprovedPtoRequests()
+        public IList<AllUnapprovedPto> GetAllNonApprovedPtoRequests()
         {
-            return ptoRequestDataService.GetAllNonApprovedPtoRequests();
+            IList<PtoRequest> ptoRequests = ptoRequestDataService.GetAllNonApprovedPtoRequests();
+            IList<AllUnapprovedPto> unapprovedPtos = new List<AllUnapprovedPto>();
+            Employee employee;
+            AllUnapprovedPto unapprovedPto;
+
+            foreach (PtoRequest request in ptoRequests)
+            {
+                unapprovedPto = new AllUnapprovedPto();
+                employee = employeeDataService.GetEmployee(request.EmployeeId);
+
+                unapprovedPto.Id = request.Id;
+                unapprovedPto.FirstName = employee.FirstName;
+                unapprovedPto.LastName = employee.LastName;
+                unapprovedPto.RequestedDate = request.RequestDate;
+                unapprovedPto.RequestedHours = request.RequestedHours;
+
+                unapprovedPtos.Add(unapprovedPto);
+            }
+
+            return unapprovedPtos;
         }
 
         public IList<PtoRequest> GetAllPtoRequestsForEmployee(int id)

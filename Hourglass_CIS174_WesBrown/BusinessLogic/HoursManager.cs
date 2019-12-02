@@ -21,6 +21,10 @@ namespace Hourglass_CIS174_WesBrown.BusinessLogic
             _logger = logger;
         }
 
+        public HoursManager()
+        {
+        }
+
         public SubmitWeeklyHours CreateWeeklyHours(SubmitWeeklyHours submitWeeklyHours)
         {
             SubmitWeeklyHours setHours = SetHours(submitWeeklyHours);
@@ -104,7 +108,7 @@ namespace Hourglass_CIS174_WesBrown.BusinessLogic
             return weeklyHoursDataService.GetAllUnPaidWeeklyHoursForEmployee(id);
         }
 
-        private SubmitWeeklyHours SetHours(SubmitWeeklyHours hours)
+        public SubmitWeeklyHours SetHours(SubmitWeeklyHours hours)
         {
             double totalHours = hours.TotalHours;
 
