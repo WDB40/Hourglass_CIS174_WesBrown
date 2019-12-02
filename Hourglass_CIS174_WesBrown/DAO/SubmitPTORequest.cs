@@ -17,8 +17,7 @@ namespace Hourglass_CIS174_WesBrown.DAO
         [Required]
         [Display(Name = "Request Date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime RequestDate { get; set; }
+        public DateTime RequestDate { get; set; } = DateTime.Now;
 
         [Required]
         [Range(0,8)]

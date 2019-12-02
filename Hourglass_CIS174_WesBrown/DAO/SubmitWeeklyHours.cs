@@ -31,14 +31,12 @@ namespace Hourglass_CIS174_WesBrown.DAO
         [Required]
         [Display(Name = "Week Start Date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime WeekStartDate { get; set; }
+        public DateTime WeekStartDate { get; set; } = DateTime.Now;
 
         [Required]
         [Display(Name = "Week End Date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime WeekEndtDate { get; set; }
+        public DateTime WeekEndtDate { get; set; } = DateTime.Now;
 
         public bool Paid { get; set; }
 
