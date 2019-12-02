@@ -1,0 +1,55 @@
+﻿@model Hourglass_CIS174_WesBrown.DAO.AllEmployees
+
+@{
+    ViewData["Title"] = "All Employees";
+}
+
+<h2>All Employees</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.PayRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.RemainingPtoHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.IsDeleted)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Employees) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PayRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RemainingPtoHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+            <td>
+                <a asp-action="AllWeeklyHoursForEmployee" asp-route-id="@item.Id">Weekly Hours</a> |
+                <a asp-action="AllPtoRequestsForEmployee" asp-route-id="@item.Id">PTO</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

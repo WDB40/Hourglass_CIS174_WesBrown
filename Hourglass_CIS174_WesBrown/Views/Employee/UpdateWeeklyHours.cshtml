@@ -1,0 +1,50 @@
+﻿@model Hourglass_CIS174_WesBrown.DAO.SubmitWeeklyHours
+
+@{
+    ViewData["Title"] = "Update Weekly Timesheet";
+}
+
+<h2>Update Weekly Timesheet</h2>
+
+<h4>WeeklyHours</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateWeeklyHours">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="EmployeeId" />
+            <div class="form-group">
+                <label asp-for="TotalHours" class="control-label"></label>
+                <input asp-for="TotalHours" class="form-control" />
+                <span asp-validation-for="TotalHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PtoHours" class="control-label"></label>
+                <input asp-for="PtoHours" class="form-control" />
+                <span asp-validation-for="PtoHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeekStartDate" class="control-label"></label>
+                <input asp-for="WeekStartDate" class="form-control" />
+                <span asp-validation-for="WeekStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeekEndtDate" class="control-label"></label>
+                <input asp-for="WeekEndtDate" class="form-control" />
+                <span asp-validation-for="WeekEndtDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="AllWeeklyHoursForEmployee" asp-route-id="@Model.EmployeeId">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

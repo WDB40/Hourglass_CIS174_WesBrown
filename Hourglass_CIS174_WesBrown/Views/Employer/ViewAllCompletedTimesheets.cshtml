@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Hourglass_CIS174_WesBrown.DAO.AllPayments>
+
+@{
+    ViewData["Title"] = "All Unpaid Timesheets Requests";
+}
+
+<h2>All Unpaid Timesheets</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegularHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OvertimeHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PtoHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegularHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OvertimeHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PtoHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                <a asp-action="PayTimesheet" asp-route-id="@item.WeeklyHoursId">Pay</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

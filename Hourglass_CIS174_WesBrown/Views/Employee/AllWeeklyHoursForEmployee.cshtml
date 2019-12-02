@@ -1,0 +1,64 @@
+﻿@model Hourglass_CIS174_WesBrown.DAO.AllWeeklyHoursForEmployee
+
+@{
+    ViewData["Title"] = "My Timesheets";
+}
+
+<h2>My Weekly Timesheets</h2>
+
+<p>
+    <a asp-action="CreateWeeklyHours" asp-route-id="@Model.EmployeeId">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.WeeklyHours.TotalHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WeeklyHours.RegularHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WeeklyHours.OvertimeHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WeeklyHours.PtoHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WeeklyHours.WeekStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WeeklyHours.WeekEndtDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.AllWeeklyHours) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegularHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OvertimeHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PtoHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WeekStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WeekEndtDate)
+            </td>
+            <td>
+                <a asp-action="UpdateWeeklyHours" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="DeleteWeeklyHours" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

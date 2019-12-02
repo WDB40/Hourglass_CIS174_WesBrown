@@ -1,0 +1,46 @@
+﻿@model Hourglass_CIS174_WesBrown.DAO.AllPtoRequestsForEmployee
+
+@{
+    ViewData["Title"] = "My PTO Requests";
+}
+
+<h2>My PTO Requests</h2>
+
+<p>
+    <a asp-action="CreatePTORequest" asp-route-id="@Model.employeeId">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PtoRequest.RequestDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PtoRequest.RequestedHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PtoRequest.Approved)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ptoRequests) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestedHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Approved)
+            </td>
+            <td>
+                <a asp-action="UpdatePtoRequest" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="DeleteRequest" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
