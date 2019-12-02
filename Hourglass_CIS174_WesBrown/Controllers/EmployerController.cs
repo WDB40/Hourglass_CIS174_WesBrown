@@ -7,12 +7,14 @@ using Hourglass_CIS174_WesBrown.BusinessLogic;
 using Hourglass_CIS174_WesBrown.DAO;
 using Hourglass_CIS174_WesBrown.Entity;
 using Hourglass_CIS174_WesBrown.Filters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hourglass_CIS174_WesBrown.Controllers
 {
     [ErrorLog]
     [ValidateModelFilter]
+    [Authorize]
     public class EmployerController : Controller
     {
 
