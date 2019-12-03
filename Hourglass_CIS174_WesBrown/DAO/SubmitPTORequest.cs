@@ -26,5 +26,7 @@ namespace Hourglass_CIS174_WesBrown.DAO
         public bool Approved { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public double RemainingHours { get; set; }
     }
 }
